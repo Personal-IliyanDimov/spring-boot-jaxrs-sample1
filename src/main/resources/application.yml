@@ -1,0 +1,12 @@
+server:
+  port: 10100
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/spring-boot-jaxrs-sample1"
+    username: postgres
+    password: postgres
