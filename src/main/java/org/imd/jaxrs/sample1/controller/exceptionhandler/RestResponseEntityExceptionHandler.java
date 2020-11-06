@@ -1,5 +1,6 @@
 package org.imd.jaxrs.sample1.controller.exceptionhandler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.imd.jaxrs.sample1.exception.UserAlreadyExistsException;
 import org.imd.jaxrs.sample1.exception.UserNotFoundException;
 import org.imd.jaxrs.sample1.exception.UserNotUpdatedException;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.util.WebUtils;
 
 @ControllerAdvice
+@Slf4j
 public class RestResponseEntityExceptionHandler
         extends ResponseEntityExceptionHandler {
 
@@ -48,5 +51,12 @@ public class RestResponseEntityExceptionHandler
             Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         return handleExceptionInternal(ex, body, headers, status, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(
+            Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        logger.error("Unable to produce rest response.", ex);
+        return new ResponseEntity<>(body, headers, status);
     }
 }

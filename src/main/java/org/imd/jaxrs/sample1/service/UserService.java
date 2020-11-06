@@ -62,4 +62,11 @@ public class UserService {
     public void deleteUserById(Long id)  {
         userRepository.deleteById(id);
     }
+
+    public User findUser(Long id) throws UserNotFoundException {
+        Optional<UserEntity> existingUserEntityOptional = userRepository.findById(id);
+        existingUserEntityOptional.orElseThrow(() -> new UserNotFoundException(id));
+
+        return userMapper.toUser(existingUserEntityOptional.get());
+    }
 }

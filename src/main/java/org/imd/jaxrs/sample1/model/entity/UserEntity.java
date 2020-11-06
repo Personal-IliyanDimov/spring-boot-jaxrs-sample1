@@ -29,6 +29,6 @@ public class UserEntity {
     private String fname;
     private String lname;
 
-    @Enumerated(EnumType.STRING)
+    // @Enumerated(EnumType.STRING)
     private UserType type;
 }
