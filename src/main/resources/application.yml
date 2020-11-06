@@ -10,3 +10,9 @@ spring:
     url: "jdbc:postgresql://localhost:5432/spring-boot-jaxrs-sample1"
     username: postgres
     password: postgres
+  zipkin:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.security.web.FilterChainProxy: DEBUG

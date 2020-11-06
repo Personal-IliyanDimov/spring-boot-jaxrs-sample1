@@ -6,6 +6,50 @@
 	},
 	"item": [
 		{
+			"name": "Actuator Endpoints",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": null,\n        \"icn\": \"234\",\n        \"fname\": \"F2\",\n        \"lname\": \"L2\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/actuator",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get all users",
 			"request": {
 				"auth": {
@@ -13,18 +57,150 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "9faa9b8e-3f97-4aa3-a669-3f57733840bf",
+							"value": "{{password}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "user",
+							"value": "{{user}}",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:10100/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:10100/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get non existing user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:10100/users/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"icn\": \"234\",\n        \"fname\": \"F2\",\n        \"lname\": \"L2\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
 				"url": {
 					"raw": "http://localhost:10100/users",
 					"protocol": "http",

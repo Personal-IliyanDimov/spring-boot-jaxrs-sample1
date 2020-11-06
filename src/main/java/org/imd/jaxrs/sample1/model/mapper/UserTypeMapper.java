@@ -25,8 +25,27 @@ public abstract class UserTypeMapper {
                 result = "dto-seller";
                 break;
             default:
-                result = "dto-other";
+                throw new IllegalArgumentException("User type unknown value: " + userType);
+        }
+
+        return result;
+    }
+
+    UserType toUserType(String dtoUserType) {
+        if (Objects.isNull(dtoUserType)) {
+            return null;
+        }
+
+        UserType result;
+        switch (dtoUserType) {
+            case "dto-buyer":
+                result = UserType.BUYER;
                 break;
+            case "dto-seller":
+                result = UserType.SELLER;
+                break;
+            default:
+                throw new IllegalArgumentException("User type unknown value: " + dtoUserType);
         }
 
         return result;
