@@ -36,14 +36,15 @@
 					"raw": "    {\n        \"id\": null,\n        \"icn\": \"234\",\n        \"fname\": \"F2\",\n        \"lname\": \"L2\",\n        \"type\": \"dto-buyer\"\n    }"
 				},
 				"url": {
-					"raw": "http://localhost:10100/actuator",
+					"raw": "http://localhost:10100/actuator/info",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "10100",
 					"path": [
-						"actuator"
+						"actuator",
+						"info"
 					]
 				}
 			},
@@ -199,7 +200,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"id\": 1,\n        \"icn\": \"234\",\n        \"fname\": \"F2\",\n        \"lname\": \"L2\",\n        \"type\": \"dto-buyer\"\n    }"
+					"raw": "    {\n        \"id\": null,\n        \"icn\": \"22222222\",\n        \"fname\": \"F2\",\n        \"lname\": \"L2\",\n        \"type\": \"dto-buyer\"\n    }"
 				},
 				"url": {
 					"raw": "http://localhost:10100/users",
@@ -210,6 +211,228 @@
 					"port": "10100",
 					"path": [
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user will fail (icn,ut)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": null,\n        \"icn\": \"22222222\",\n        \"fname\": \"F3\",\n        \"lname\": \"L3\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user will fail (fn,ln)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": null,\n        \"icn\": \"22222222\",\n        \"fname\": \"F3\",\n        \"lname\": \"L3\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user will fail (id)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1006,\n        \"icn\": \"33333333\",\n        \"fname\": \"F3\",\n        \"lname\": \"L3\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user will fail (id)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"icn\": \"22222222\",\n        \"fname\": \"F22\",\n        \"lname\": \"L22\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user will fail (diff ids)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"icn\": \"11111111\",\n        \"fname\": \"F11\",\n        \"lname\": \"L11\",\n        \"type\": \"dto-buyer\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:10100/users/1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10100",
+					"path": [
+						"users",
+						"1000"
 					]
 				}
 			},

@@ -105,7 +105,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
             Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        logger.error("Unable to produce rest response.", ex);
+        logger.error("Unable to produce rest response:", ex);
         return new ResponseEntity<>(body, headers, status);
     }
 }

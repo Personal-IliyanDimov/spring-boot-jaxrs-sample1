@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<UserDto> createUser(@RequestBody @Validated({CreateGroup.class}) UserDto userDto) throws UserAlreadyExistsException {
+    ResponseEntity<UserDto> createUser(@RequestBody @Validated(CreateGroup.class) @Valid UserDto userDto) throws UserAlreadyExistsException {
         final User user = userMapper.toUser(userDto);
         final User createdUser = userService.createUser(user);
         return ResponseEntity.ok(userMapper.toUserDto(createdUser));
@@ -55,7 +56,7 @@ public class UserController {
 
     @PutMapping(value = "/{id}")
     ResponseEntity<UserDto> updateUser(@PathVariable(name = "id") @NotNull Long id,
-                                       @RequestBody @Validated({UpdateGroup.class})  UserDto userDto) throws UserNotFoundException, UserNotUpdatedException {
+                                       @RequestBody @Validated(UpdateGroup.class) @Valid UserDto userDto) throws UserNotFoundException, UserNotUpdatedException {
         final User user = userMapper.toUser(userDto);
         final User createdUser = userService.updateUser(id, user);
         return ResponseEntity.ok(userMapper.toUserDto(createdUser));

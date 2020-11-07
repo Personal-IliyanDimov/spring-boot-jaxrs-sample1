@@ -6,7 +6,8 @@ import lombok.ToString;
 
 @Getter
 @ToString
-@RequiredArgsConstructor
 public class UserNotUpdatedException extends Exception {
-    private final Exception nestedException;
+    public UserNotUpdatedException(Exception causedBy) {
+        super(causedBy);
+    }
 }
