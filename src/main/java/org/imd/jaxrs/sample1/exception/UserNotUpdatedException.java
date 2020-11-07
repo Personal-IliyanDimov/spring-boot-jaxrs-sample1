@@ -1,8 +1,12 @@
 package org.imd.jaxrs.sample1.exception;
 
-public class UserNotUpdatedException extends Exception {
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-    public UserNotUpdatedException(Throwable cause) {
-        super(cause);
-    }
+@Getter
+@ToString
+@RequiredArgsConstructor
+public class UserNotUpdatedException extends Exception {
+    private final Exception nestedException;
 }

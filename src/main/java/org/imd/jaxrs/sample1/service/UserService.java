@@ -30,13 +30,13 @@ public class UserService {
     }
 
     public User createUser(User user) throws UserAlreadyExistsException {
-        if (Objects.isNull(user.getId())) {
-            throw new IllegalStateException("User param must be without id.");
+        if (Objects.nonNull(user.getId())) {
+            throw new IllegalStateException("User param must be with id null.");
         }
 
-        boolean userExists = userRepository.existsById(user.getId());
-        if (userExists) {
-            throw new UserAlreadyExistsException(user.getId());
+        Optional<UserEntity> existingUserEntityOptional = userRepository.findByIcnAndType(user.getIcn(), user.getType());
+        if (existingUserEntityOptional.isPresent()) {
+            throw new UserAlreadyExistsException(user.getIcn(), user.getType());
         }
 
         UserEntity userEntity = userMapper.toUserEntity(user);
@@ -44,11 +44,15 @@ public class UserService {
         return userMapper.toUser(savedUserEntity);
     }
 
-    public User updateUser(User user) throws UserNotFoundException, UserNotUpdatedException {
+    public User updateUser(Long id, User user) throws UserNotFoundException, UserNotUpdatedException {
         Optional<UserEntity> existingUserEntityOptional = userRepository.findById(user.getId());
         existingUserEntityOptional.orElseThrow(() -> new UserNotFoundException(user.getId()));
 
         UserEntity existingUserEntity = existingUserEntityOptional.get();
+        if (! id.equals(user.getId())) {
+            throw new IllegalStateException("Parameter {id} value is different from {user.id} value.");
+        }
+
         userMapper.transfer(user, existingUserEntity);
 
         try {
@@ -59,7 +63,12 @@ public class UserService {
         }
     }
 
-    public void deleteUserById(Long id)  {
+    public void deleteUserById(Long id) throws UserNotFoundException {
+        boolean exists = userRepository.existsById(id);
+        if (! exists) {
+            throw new UserNotFoundException(id);
+        }
+
         userRepository.deleteById(id);
     }
 
